@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Page</title>
+  <link rel="stylesheet" href="media page.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+
+    
+    header {
+      background: #111;
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    header h1 {
+      flex: 1;
+      text-align: center;
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    #logout {
+      background: #0056b3;
+      color: white;
+      border: 2px solid #004a99;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+      transition: 0.3s;
+    }
+
+    #logout:hover {
+      background: #003d80;
+      box-shadow: 0 0 6px rgba(255,255,255,0.4);
+    }
+
+    
+    .navbar {
+      display: flex;
+      justify-content: space-around;
+      background-color: #ffffff;
+      border-bottom: 2px solid #007bff;
+      padding: 10px 0;
+    }
+
+    .nav-item {
+      text-align: center;
+      cursor: pointer;
+      color: #007bff;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .nav-item:hover {
+      color: #0056b3;
+    }
+
+    .nav-item i {
+      font-size: 26px;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease-in;
+    }
+
+    .active-tab {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+    }
+
+    iframe, video {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 80px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .photo-box {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      height: 260px;
+    }
+
+    .photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .photo-box img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 15px;
+    }
+
+    .video-grid iframe {
+      width: 100%;
+      height: 200px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-grid iframe:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  
+  <header>
+    <div></div>
+    <h1> House Floor Plans</h1>
+    <button id="logout">Logout</button>
+  </header>
+
+  
+  <div class="navbar">
+    <div class="nav-item" onclick="openTab('plan')">
+      <i class="fas fa-drafting-compass"></i>
+      <span>Plan Info</span>
+    </div>
+    <div class="nav-item" onclick="openTab('videos')">
+      <i class="fas fa-video"></i>
+      <span>Videos</span>
+    </div>
+    <div class="nav-item" onclick="openTab('apps')">
+      <i class="fas fa-mobile-alt"></i>
+      <span>App</span>
+    </div>
+    <div class="nav-item" onclick="openTab('comments')">
+      <i class="fas fa-comments"></i>
+      <span>Comments</span>
+    </div>
+  </div>
+
+  <div class="content">
+    
+    <div id="plan" class="tab-content active-tab">
+      <div class="card">
+        <h2>Modern House Designs</h2>
+        <p>Modern house designs go far beyond traditional concepts — they combine innovation, simplicity, and sustainability to create homes that truly fit today’s lifestyle.
+           These designs emphasize open-plan layouts, large glass windows for natural lighting, and smooth indoor–outdoor transitions that bring nature closer to daily life.
+           With clean lines, minimal décor, and energy-efficient materials, each modern home represents a perfect harmony between style and practicality.
+           Whether you prefer a compact urban residence or a luxurious two-story villa, modern architecture focuses on space optimization, comfort, and timeless elegance that
+           enhances the way you live.</p>
+        <div class="photo-grid">
+          <div class="photo-box"><img src="house1.jpg" alt="House Plan 1"></div>
+          <div class="photo-box"><img src="house2.webp" alt="House Plan 2"></div>
+          <div class="photo-box"><img src="house3.jpg" alt="House Plan 3"></div>
+          <div class="photo-box"><img src="house4.webp" alt="House Plan 4"></div>
+          <div class="photo-box"><img src="house5.png" alt="House Plan 5"></div>
+          <div class="photo-box"><img src="house6.png" alt="House Plan 6"></div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div id="videos" class="tab-content">
+      <div class="card">
+        <h2>House Design Videos</h2>
+        <p>Learn how to understand and create your own house plans with clarity and confidence.
+           These videos will guide you step by step — from reading architectural layouts to sketching your own floor designs.
+           Discover how different shapes, dimensions, and layouts work together to build functional and beautiful living spaces.</p>
+        <div class="video-grid">
+          <iframe src="https://www.youtube.com/embed/6XNpiqv2XPE" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/ruBOZMMXhs4" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/hO865EIE0p0" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/4f3trUdEFsI" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+    <div id="apps" class="tab-content">
+      <section style="background-color:#111; color:white; padding:30px; border-radius:15px;">
+        <h2 style="text-align:center; font-size:28px;">🧩 Try These 2D House Plan Apps</h2>
+        <p style="text-align:center; font-size:18px; color:#ccc;">Create, draw, and explore different floor plan designs using these free web-based tools.</p>
+
+        <div style="display:grid; grid-template-columns:1fr; gap:40px; margin-top:30px;">
+          
+          <div>
+            <h3>1. Planner 5D</h3>
+            <p>Design 2D and 3D house plans easily — beginner friendly and free to use.</p>
+            <iframe src="https://planner5d.com" width="100%" height="350px" style="border:2px solid #444; border-radius:10px;"></iframe>
+          </div>
+          <div>
+            <h3>2. Floor Planner</h3>
+            <p>Professional 2D floor plan editor — great for architects and interior designers.</p>
+            <iframe src="https://floorplanner.com" width="100%" height="350px" style="border:2px solid #444; border-radius:10px;"></iframe>
+          </div>
+          <div>
+            <h3>3. Room Planner</h3>
+            <p>Plan your house layout room by room — includes furniture and smart design tools.</p>
+            <iframe src="https://roomstyler.com/3dplanner" width="100%" height="350px" style="border:2px solid #444; border-radius:10px;"></iframe>
+          </div>
+          <div>
+            <h3>4. Homestyler</h3>
+            <p>Create 2D home layouts and visualize interiors in real-time 3D view.</p>
+            <iframe src="https://www.homestyler.com/floor-plan-designer" width="100%" height="350px" style="border:2px solid #444; border-radius:10px;"></iframe>
+          </div>
+          <div>
+            <h3>5. Cedreo</h3>
+            <p>Powerful online home design tool used by professionals for floor plans.</p>
+            <iframe src="https://www.cedreo.com" width="100%" height="350px" style="border:2px solid #444; border-radius:10px;"></iframe>
+          </div>
+          <div>
+            <h3>6. Sweet Home 3D</h3>
+            <p>Free interior design app with 2D floor plan editor and 3D preview.</p>
+            <iframe src="https://www.sweethome3d.com" width="100%" height="350px" style="border:2px solid #444; border-radius:10px;"></iframe>
+          </div>
+          <div>
+            <h3>7. SketchUp Free</h3>
+            <p>Web-based 3D modeling software that lets you design floor plans and furniture layouts.</p>
+            <iframe src="https://www.sketchup.com/plans-and-pricing/sketchup-free" width="100%" height="350px" style="border:2px solid #444; border-radius:10px;"></iframe>
+          </div>
+          <div>
+            <h3>8. RoomSketcher</h3>
+            <p>Create floor plans and home designs easily — drag & drop, no download needed.</p>
+            <iframe src="https://www.roomsketcher.com" width="100%" height="350px" style="border:2px solid #444; border-radius:10px;"></iframe>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    
+    <div id="comments" class="tab-content">
+      <div class="card">
+        <h2>Comments</h2>
+        <textarea id="commentBox" placeholder="Write your comment..."></textarea>
+        <button onclick="postComment()">Post Comment</button>
+        <div id="commentSection"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    
+    function openTab(tabId) {
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(t => t.classList.remove('active-tab'));
+      document.getElementById(tabId).classList.add('active-tab');
+    }
+
+    
+    function postComment() {
+      const text = document.getElementById('commentBox').value.trim();
+      if (text === "") return alert("Please enter a comment!");
+      const comment = document.createElement('p');
+      comment.textContent = " " + text;
+      const section = document.getElementById('commentSection');
+      section.insertBefore(comment, section.firstChild);
+      document.getElementById('commentBox').value = "";
+    }
+
+    
+    window.addEventListener("DOMContentLoaded", function () {
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (!currentUser) {
+        alert("Please sign in first!");
+        window.location.href = "signin.html";
+        return;
+      }
+
+      document.getElementById("logout").addEventListener("click", function () {
+        localStorage.removeItem("currentUser");
+        alert("Logged out successfully!");
+        window.location.href = "signin.html";
+      });
+    });
+  </script>
+</body>
+</html>
